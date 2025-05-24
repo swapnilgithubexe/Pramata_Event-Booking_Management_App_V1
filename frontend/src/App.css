@@ -1,0 +1,15 @@
+.common-btn {
+  background-color: #8a4baf;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: #5f357e;
+  }
+}

@@ -1,0 +1,39 @@
+.events {
+  padding: 80px 0;
+  text-align: center;
+
+  h2 {
+    font-size: 32px;
+    color: #8a4baf;
+    margin-bottom: 30px;
+  }
+  .event-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+
+    .event-card {
+      background-color: white;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: left;
+      flex-direction: column;
+      align-items: center;
+
+      &:hover {
+        background-color: #d9dbfe;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.event-img img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px; /* or 50% for circular */
+  margin-bottom: 10px;
+}
