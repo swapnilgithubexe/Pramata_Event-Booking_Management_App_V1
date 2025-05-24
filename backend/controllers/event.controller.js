@@ -39,7 +39,7 @@ export const getAllEvents = async (req, res) => {
 //single event details
 export const getSingleEvent = async (req, res) => {
   const { eventId } = req.params;
-  const event = await eventModel.findById(eventId).populate(organizer);
+  const event = await eventModel.findById(eventId).populate("organizer", "name email");
   if (!event) return res.status(400).json({
     success: false,
     message: "No events found"
