@@ -52,7 +52,12 @@ const eventSchema = new mongoose.Schema({
       },
       comment: String
     }
-  ]
+  ],
+  availableSeats: {
+    type: Number,
+    min: 1,
+    max: 1000
+  }
 
 }, {
   timestamps: true
