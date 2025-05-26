@@ -19,7 +19,7 @@ const Header = ({ isAuth }) => {
         <Link to={"/events"}>Events</Link>
         <Link to={"/attendees"}>Attendees</Link>
         {isAuth ? (
-          <Link to={"/create"}>Create Event</Link>
+          <Link to={"/account"}>Account</Link>
         ) : (
           <Link to={"/login"}>Login</Link>
         )}

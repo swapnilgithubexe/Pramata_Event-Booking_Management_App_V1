@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 import { useUserData } from "../../context/userContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -88,6 +88,9 @@ const Register = () => {
           <button disabled={btnLoading} className="common-btn">
             {btnLoading ? "Please wait.." : "Register"}
           </button>
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
         </form>
       </div>
     </div>

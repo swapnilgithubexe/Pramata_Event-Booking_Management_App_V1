@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react";
-import { server } from "../src/main";
+import { createContext, useContext, useEffect, useState } from "react";
+import { server } from "../main";
 import axios from "axios";
 
 const UserContext = createContext();
@@ -12,6 +12,7 @@ export const UserContextProvider = ({ children }) => {
 
   async function login(email, password, navigate) {
     //we are using navigate here to immediately set the user and navigate him to the landing page
+    setBtnLoading(true);
     try {
       const { data } = await axios.post(`${server}/api/auth/v1/login`, {
         email,
@@ -25,6 +26,7 @@ export const UserContextProvider = ({ children }) => {
       navigate("/");
     } catch (error) {
       console.log(error.response.data.message);
+      setBtnLoading(false);
     }
   }
 
@@ -47,6 +49,24 @@ export const UserContextProvider = ({ children }) => {
       setBtnLoading(false);
     }
   }
+
+  async function fetchUser() {
+    try {
+      const { data } = await axios.get(`${server}/api/auth/v1/user/me`, {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      });
+      setUser(data.user);
+      setIsAuth(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   return (
     <UserContext.Provider

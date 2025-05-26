@@ -18,6 +18,7 @@ const Login = () => {
   return (
     <div className="auth-page">
       <div className="auth-form">
+        <h2>Login</h2>
         <form action="" onSubmit={submithandler}>
           <label htmlFor="email">Email</label>
           <input

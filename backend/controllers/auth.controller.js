@@ -26,7 +26,7 @@ export const registerUser = async (req, res) => {
   });
 
   //created a jwt auth token
-  const token = generateToken(user._id);
+  const token = generateToken({ _id: user._id });
 
   //not sending the pass
   const userobj = user.toObject();
@@ -59,11 +59,21 @@ export const loginUser = async (req, res) => {
       message: "Password did not match, try again"
     })
   }
-  const token = generateToken(user._id);
+  const token = generateToken({ _id: user._id });
   res.status(200).json({
     success: true,
     message: `Welcome! ${user.name}`,
     token: token,
+    user: user
+  })
+}
+
+//fetch logged in user
+export const fetchUser = async (req, res) => {
+  const user = await userModel.findById(req.user._id);
+  res.status(200).json({
+    success: true,
+    message: "user fetching successful",
     user: user
   })
 }
